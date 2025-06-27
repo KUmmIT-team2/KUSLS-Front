@@ -34,24 +34,24 @@ class MainActivity : ComponentActivity() {
                 var selectedRoute by remember { mutableStateOf(Route.Home.route) }
 
                 val bottomNavItems = listOf(
-                    BottomNavItem("홈", Route.Home.route, R.drawable.ic_home),
-                    BottomNavItem("검색", Route.Search.route, R.drawable.ic_search),
-                    BottomNavItem("채팅", Route.Chat.route, R.drawable.ic_chat),
-                    BottomNavItem("마이페이지", Route.My.route, R.drawable.ic_my)
+                    BottomNavItem(Route.Home.route, R.drawable.ic_home),
+                    BottomNavItem(Route.Search.route, R.drawable.ic_search),
+                    BottomNavItem(Route.Chat.route, R.drawable.ic_chat),
+                    BottomNavItem(Route.My.route, R.drawable.ic_my)
                 )
 
                 Scaffold(
                     bottomBar = {
                         NavigationBar {
-                            bottomNavItems.forEach{item ->
+                            bottomNavItems.forEach { item ->
                                 NavigationBarItem(
                                     selected = selectedRoute == item.route,
                                     onClick = {
                                         selectedRoute = item.route
-                                        navController.navigate(item.route){
+                                        navController.navigate(item.route) {
                                             launchSingleTop = true
                                             restoreState = true
-                                            popUpTo(navController.graph.startDestinationId){
+                                            popUpTo(navController.graph.startDestinationId) {
                                                 saveState = true
                                             }
                                         }
@@ -59,20 +59,15 @@ class MainActivity : ComponentActivity() {
                                     icon = {
                                         Icon(
                                             painter = painterResource(id = item.icon),
-                                            contentDescription = item.label
-                                        )
-                                    },
-                                    label = {
-                                        Text(
-                                            text = item.label
+                                            contentDescription = "bottomBarIcon",
                                         )
                                     }
+
                                 )
                             }
                         }
                     }
-                ) {
-                    innerPadding ->
+                ) { innerPadding ->
                     MainNavGraph(
                         navController = navController,
                         modifier = Modifier.padding(innerPadding)
