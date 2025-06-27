@@ -2,6 +2,7 @@ package com.konkuk.kusls.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -9,7 +10,8 @@ import com.konkuk.kusls.presentation.auth.LogInScreen
 import com.konkuk.kusls.presentation.auth.RegisterScreen
 import com.konkuk.kusls.presentation.chat.ChatScreen
 import com.konkuk.kusls.presentation.home.HomeScreen
-import com.konkuk.kusls.presentation.my.screen.MyScreen
+import com.konkuk.kusls.presentation.my.MyScreen
+import com.konkuk.kusls.presentation.my.MyViewModel
 import com.konkuk.kusls.presentation.search.SearchScreen
 
 @Composable
@@ -17,6 +19,9 @@ fun MainNavGraph(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
+
+    val viewModel: MyViewModel = hiltViewModel()
+
     NavHost(
         navController = navController,
         startDestination = Route.Home.route
@@ -48,7 +53,8 @@ fun MainNavGraph(
 
         composable(route = Route.My.route) {
             MyScreen(
-                modifier = modifier
+                modifier = modifier,
+                index = 1
             )
         }
 

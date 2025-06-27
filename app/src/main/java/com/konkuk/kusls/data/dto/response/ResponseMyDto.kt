@@ -5,10 +5,18 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ResponseMyDto(
-    val name: String = "",
-    val major: String = "",
-    val studentId: String = "",
-    val image: Int,
-    @SerialName("wish-major")
-    var wishMajor: String = ""
+    @SerialName("bio")
+    val bio: String,
+    @SerialName("departmentId")
+    val departmentId: Int,
+    @SerialName("email")
+    val email: String,
+    @SerialName("isMentor")
+    val isMentor: Boolean,
+    @SerialName("nickname")
+    val nickname: String,
+    @SerialName("url")
+    val url: String,
+    @SerialName("username")
+    val username: String
 )
