@@ -14,7 +14,6 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     var url by mutableStateOf<String?>(null)
-        private set
 
     init {
         getTestData()
