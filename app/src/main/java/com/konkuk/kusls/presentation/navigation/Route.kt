@@ -7,6 +7,8 @@ sealed class Route(
 
     data object LogIn : Route(route = "login")
 
+    data object Register : Route(route = "Register")
+
     data object Chat : Route(route = "chat")
 
     data object My : Route(route = "my")
