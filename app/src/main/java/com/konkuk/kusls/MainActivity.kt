@@ -21,7 +21,9 @@ import com.konkuk.kusls.presentation.navigation.BottomNavItem
 import com.konkuk.kusls.presentation.navigation.MainNavGraph
 import com.konkuk.kusls.presentation.navigation.Route
 import com.konkuk.kusls.ui.theme.KUSLSTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
