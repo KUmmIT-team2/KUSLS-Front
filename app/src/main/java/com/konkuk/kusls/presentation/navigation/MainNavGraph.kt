@@ -9,7 +9,7 @@ import com.konkuk.kusls.presentation.auth.LogInScreen
 import com.konkuk.kusls.presentation.auth.RegisterScreen
 import com.konkuk.kusls.presentation.chat.ChatScreen
 import com.konkuk.kusls.presentation.home.HomeScreen
-import com.konkuk.kusls.presentation.my.MyScreen
+import com.konkuk.kusls.presentation.my.screen.MyScreen
 import com.konkuk.kusls.presentation.search.SearchScreen
 
 @Composable
