@@ -6,6 +6,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,8 +27,11 @@ import com.konkuk.kusls.presentation.chat.component.ChatPreview
 fun ChatScreen(
     modifier: Modifier = Modifier
 ) {
+    val lazyState = rememberLazyListState()
+
+
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Color(0xFFFFFFFF))
     ) {
@@ -46,36 +52,45 @@ fun ChatScreen(
                 ), modifier = Modifier.padding(top = 31.dp)
             )
         }
-        Column {
-            ChatPreview(
-                "최지현",
-                "공과대학",
-                "컴퓨터공학부",
-                "컴퓨터공학부 오지마세요~~~~~ ~~~~~~ ~~~ ~~~~~~ ~~~ ~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-                R.drawable.ic_launcher_background
-            )
-            ChatPreview(
-                "최지현",
-                "공과대학",
-                "컴퓨터공학부",
-                "컴퓨터공학부 오지마세요~~~~~ ~~~~~~ ~~~ ~~~~~~ ~~~ ~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-                R.drawable.ic_launcher_background
-            )
-            ChatPreview(
-                "최지현",
-                "공과대학",
-                "컴퓨터공학부",
-                "컴퓨터공학부 오지마세요~~~~~ ~~~~~~ ~~~ ~~~~~~ ~~~ ~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-                R.drawable.ic_launcher_background
-            )
-            ChatPreview(
-                "최지현",
-                "공과대학",
-                "컴퓨터공학부",
-                "컴퓨터공학부 오지마세요~~~~~ ~~~~~~ ~~~ ~~~~~~ ~~~ ~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-                R.drawable.ic_launcher_background
-            )
 
+        val chatList = listOf(
+            ChatData(
+                "최지현",
+                "공과대학",
+                "컴퓨터공학부",
+                "컴퓨터공학부 오지마세요~~~~~ ~~~~~~ ~~~ ~~~~~~ ~~~ ~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                R.drawable.ic_launcher_background
+            ),
+            ChatData("김건국", "공과대학", "화학공학과", "화학공학과입니다~~~~~", R.drawable.ic_launcher_background),
+            ChatData("김건국", "공과대학", "화학공학과", "화학공학과입니다~~~~~", R.drawable.ic_launcher_background),
+            ChatData("김건국", "공과대학", "화학공학과", "화학공학과입니다~~~~~", R.drawable.ic_launcher_background),
+            ChatData("김건국", "공과대학", "화학공학과", "화학공학과입니다~~~~~", R.drawable.ic_launcher_background),
+            ChatData("김건국", "공과대학", "화학공학과", "화학공학과입니다~~~~~", R.drawable.ic_launcher_background),
+            ChatData("김건국", "공과대학", "화학공학과", "화학공학과입니다~~~~~", R.drawable.ic_launcher_background),
+            ChatData("김건국", "공과대학", "화학공학과", "화학공학과입니다~~~~~", R.drawable.ic_launcher_background),
+            ChatData("김건국", "공과대학", "화학공학과", "화학공학과입니다~~~~~", R.drawable.ic_launcher_background),
+            ChatData(
+                "최지현",
+                "공과대학",
+                "컴퓨터공학부",
+                "컴퓨터공학부 오지마세요~~~~~ ~~~~~~ ~~~ ~~~~~~ ~~~ ~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                R.drawable.ic_launcher_background
+            )
+        )
+
+
+        LazyColumn(
+            state = lazyState,
+        ) {
+            items(chatList) { chat ->
+                ChatPreview(
+                    userName = chat.userName,
+                    college = chat.college,
+                    department = chat.department,
+                    chatText = chat.chatText,
+                    profileImg = chat.profileImage
+                )
+            }
         }
 
     }

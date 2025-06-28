@@ -1,5 +1,7 @@
 package com.konkuk.kusls.presentation.navigation
 
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -17,7 +19,8 @@ import com.konkuk.kusls.presentation.search.SearchScreen
 @Composable
 fun MainNavGraph(
     navController: NavHostController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    innerPadding: PaddingValues = PaddingValues()
 ) {
 
     val viewModel: MyViewModel = hiltViewModel()
@@ -28,39 +31,39 @@ fun MainNavGraph(
     ) {
         composable(route = Route.Home.route) {
             HomeScreen(
-                modifier = modifier
+                modifier = modifier.padding(innerPadding)
             )
         }
 
         composable(route = Route.LogIn.route) {
             LogInScreen(
-                modifier = modifier
+                modifier = modifier.padding(innerPadding)
             )
 
         }
 
         composable(route = Route.Register.route) {
             RegisterScreen(
-                modifier = modifier
+                modifier = modifier.padding(innerPadding)
             )
         }
 
         composable(route = Route.Search.route) {
             SearchScreen(
-                modifier = modifier
+                modifier = modifier.padding(innerPadding)
             )
         }
 
         composable(route = Route.My.route) {
             MyScreen(
-                modifier = modifier,
+                modifier = modifier.padding(innerPadding),
                 index = 1
             )
         }
 
         composable(route = Route.Chat.route) {
             ChatScreen(
-                modifier = modifier
+                modifier = modifier.padding(innerPadding)
             )
         }
     }
