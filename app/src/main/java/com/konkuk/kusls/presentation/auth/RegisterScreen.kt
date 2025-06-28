@@ -81,7 +81,7 @@ fun RegisterScreen(
         Column(
             modifier = modifier
                 .width(columnWidthDp.dp)
-                .height((columnWidthDp + 180).dp)
+                .height((columnWidthDp + 100).dp)
                 .background(color = Color(0x99FFFFFF))
         ) {
             Spacer(modifier = Modifier.height(18.dp))
@@ -159,67 +159,9 @@ fun RegisterScreen(
                     onValueChanged = { value = it }
                 )
             }
-
-            Spacer(modifier = Modifier.height(36.dp))
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 29.dp)
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "Major",
-                        fontSize = 14.sp
-                    )
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text(
-                        text = "*",
-                        style = TextStyle(
-                            color = Color(0xFFFF0000)
-                        )
-                    )
-                    Spacer(modifier = Modifier.width(22.dp))
-                    Box(
-                        modifier = Modifier
-                            .background(Color.LightGray)
-                    ) {
-                        Button(
-                            modifier = Modifier
-                                .width(163.dp)
-                                .height(40.dp)
-                                .align(Alignment.CenterEnd),
-                            contentPadding = PaddingValues(0.dp),
-                            shape = RoundedCornerShape(6.dp),
-                            onClick = {
-                                // TODO
-                            },
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = Color(0xFF435D18),
-                                contentColor = Color.White
-                            )
-                        ) {
-                            Image(
-                                painter = painterResource(R.drawable.ic_drop_box),
-                                contentDescription = "dropBox",
-                                modifier = Modifier
-                                    .size(19.dp)
-                                    .padding(end = 10.dp)
-                            )
-                            Spacer(modifier = Modifier.width(3.dp))
-                            Text(
-                                text = "자유전공 종류 선택",
-                                fontSize = 14.sp,
-                                fontFamily = FontFamily(Font(R.font.notosanskr_bold))
-                            )
-                        }
-                    }
-                }
-            }
         }
         Spacer(modifier = Modifier.height(27.dp))
-        GreenButton("가입하기")
+        GreenButton("가입하기",83, 55)
     }
 }
 
