@@ -1,6 +1,7 @@
 package com.konkuk.kusls.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -34,12 +35,12 @@ fun GreenButton(
             .background(Color.LightGray)
     ) {
         Button(
+            contentPadding = PaddingValues(0.dp),
+            shape = RoundedCornerShape(6.dp),
             modifier = Modifier
                 .width(width.dp)
                 .height(height.dp)
                 .align(Alignment.CenterEnd),
-            contentPadding = PaddingValues(0.dp),
-            shape = RoundedCornerShape(6.dp),
             onClick = {
                 // TODO
             },
