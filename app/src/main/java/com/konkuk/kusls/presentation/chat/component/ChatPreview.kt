@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -27,7 +26,6 @@ import com.konkuk.kusls.R
 
 @Composable
 fun ChatPreview(
-    modifier: Modifier = Modifier,
     userName: String,
     college: String,
     department: String,
@@ -87,7 +85,6 @@ fun ChatPreview(
 @Composable
 private fun ChatPreviewPreview() {
     ChatPreview(
-        Modifier,
         "최지현",
         "공과대학",
         "컴퓨터공학부",
