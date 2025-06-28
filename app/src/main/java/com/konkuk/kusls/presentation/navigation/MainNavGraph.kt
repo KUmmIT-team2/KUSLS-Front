@@ -11,6 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.konkuk.kusls.R
+import com.konkuk.kusls.presentation.auth.AuthViewModel
 import com.konkuk.kusls.presentation.auth.LogInScreen
 import com.konkuk.kusls.presentation.auth.RegisterScreen
 import com.konkuk.kusls.presentation.chat.ChatScreen
@@ -20,6 +21,8 @@ import com.konkuk.kusls.presentation.home.MentorDetailScreen
 import com.konkuk.kusls.presentation.home.MentorScreen
 import com.konkuk.kusls.presentation.my.MyScreen
 import com.konkuk.kusls.presentation.my.MyViewModel
+import com.konkuk.kusls.presentation.search.CollegeViewModel
+import com.konkuk.kusls.presentation.search.DepartmentViewModel
 import com.konkuk.kusls.presentation.search.QnADetailScreen
 import com.konkuk.kusls.presentation.search.QnAScreen
 import com.konkuk.kusls.presentation.search.SearchScreen
@@ -33,6 +36,9 @@ fun MainNavGraph(
 ) {
 
     val viewModel: MyViewModel = hiltViewModel()
+    val authViewModel: AuthViewModel = hiltViewModel()
+    val departmentViewModel: DepartmentViewModel = hiltViewModel()
+    val collegeViewModel: CollegeViewModel= hiltViewModel()
 
     NavHost(
         navController = navController,
@@ -48,7 +54,8 @@ fun MainNavGraph(
         composable(route = Route.LogIn.route) {
             LogInScreen(
                 modifier = modifier.padding(innerPadding),
-                navController = navController
+                navController = navController,
+                viewModel = authViewModel
             )
         }
 
@@ -62,7 +69,8 @@ fun MainNavGraph(
         composable(route = Route.My.route) {
             MyScreen(
                 modifier = modifier.padding(innerPadding),
-                index = 1
+                index = 1,
+                viewModel2 = departmentViewModel
             )
         }
 
@@ -83,7 +91,9 @@ fun MainNavGraph(
         composable(route = Route.Search.route) {
             SearchScreen(
                 modifier = modifier.padding(innerPadding),
-                navController = navController
+                navController = navController,
+                viewModel = departmentViewModel,
+                viewModel2 = collegeViewModel
             )
         }
 
@@ -124,7 +134,14 @@ fun MainNavGraph(
             val userName = backStackEntry.arguments?.getString("userName") ?: ""
 
             val chatData = when (userName) {
-                "최지현" -> ChatData("최지현", "공과대학", "컴퓨터공학부", "컴퓨터공학부 오지마세요~~~", R.drawable.ic_launcher_background)
+                "최지현" -> ChatData(
+                    "최지현",
+                    "공과대학",
+                    "컴퓨터공학부",
+                    "컴퓨터공학부 오지마세요~~~",
+                    R.drawable.ic_launcher_background
+                )
+
                 else -> ChatData("알수없음", "없음", "없음", "설명 없음", R.drawable.ic_launcher_background)
             }
 
