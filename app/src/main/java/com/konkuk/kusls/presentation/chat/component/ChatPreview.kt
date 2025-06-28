@@ -57,7 +57,7 @@ fun ChatPreview(
             )
             Column(modifier = Modifier.padding(start = 18.dp)) {
                 Text(
-                    text = "${userName} - ${college} ${department}",
+                    text = "$userName - $college $department",
                     style = TextStyle(
                         fontSize = 13.sp,
                         lineHeight = 18.sp,
