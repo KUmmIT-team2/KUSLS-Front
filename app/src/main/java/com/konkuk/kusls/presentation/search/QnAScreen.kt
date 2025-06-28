@@ -34,7 +34,7 @@ fun QnAScreen(
             .fillMaxSize()
             .background(Color(0xFFFFFFFF))
     ) {
-        QnATitle(Modifier, department)
+        QnATitle(department)
 
         SearchBox(
             baseplaceholder = "검색어를 입력해주세요.",
