@@ -1,6 +1,7 @@
 package com.konkuk.kusls.di
 
 import com.konkuk.kusls.data.service.MyService
+import com.konkuk.kusls.data.service.QnaService
 import com.konkuk.kusls.data.service.TestService
 import dagger.Module
 import dagger.Provides
@@ -22,4 +23,8 @@ object ApiModule {
     fun providesMyService(retrofit: Retrofit): MyService =
         retrofit.create(MyService::class.java)
 
+    @Provides
+    @Singleton
+    fun provideQnaService(retrofit: Retrofit): QnaService =
+        retrofit.create(QnaService::class.java)
 }

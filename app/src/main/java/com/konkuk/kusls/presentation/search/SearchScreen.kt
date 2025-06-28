@@ -25,6 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.konkuk.kusls.R
 import com.konkuk.kusls.component.SearchBox
 import com.konkuk.kusls.presentation.search.component.CollegeButton
@@ -153,7 +154,11 @@ fun SearchScreen(
                 DepartmentBox(
                     department = search.department,
                     image = search.image,
-                    college = search.college
+                    college = search.college,
+                    onClick = {
+                        val encoded = java.net.URLEncoder.encode(search.department, "UTF-8")
+                        navController.navigate("department_detail/$encoded")
+                    }
                 )
             }
         }
@@ -196,7 +201,11 @@ fun SearchScreen(
                 DepartmentBox(
                     department = search.department,
                     image = search.image,
-                    college = search.college
+                    college = search.college,
+                    onClick = {
+                        val encoded = java.net.URLEncoder.encode(search.department, "UTF-8")
+                        navController.navigate("department_detail/$encoded")
+                    }
                 )
             }
         }

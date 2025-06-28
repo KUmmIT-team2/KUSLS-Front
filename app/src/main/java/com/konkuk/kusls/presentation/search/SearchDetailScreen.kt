@@ -72,15 +72,15 @@ fun SearchDetailScreen(modifier: Modifier = Modifier, department: String) {
         ) {
             MenuTitle(title = "질문게시판")
             Spacer(modifier = Modifier.size(7.dp))
-            QuestionBox(
-                title = "복수전공으로 컴공 많이 빡셀까요..?",
-                recommend = 7
-            )
+//            QuestionBox(
+//                title = "복수전공으로 컴공 많이 빡셀까요..?",
+//                recommend = 7
+//            )
             Spacer(modifier = Modifier.size(19.dp))
-            QuestionBox(
-                title = "000교수님 수업 어떤가요? 학점 잘 주시나요?",
-                recommend = 7
-            )
+//            QuestionBox(
+//                title = "000교수님 수업 어떤가요? 학점 잘 주시나요?",
+//                recommend = 7
+//            )
             Spacer(modifier = Modifier.size(30.dp))
 
             Spacer(

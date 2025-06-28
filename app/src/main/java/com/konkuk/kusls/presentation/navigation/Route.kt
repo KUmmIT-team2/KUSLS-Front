@@ -17,10 +17,13 @@ sealed class Route(
 
     data object Search : Route(route = "search")
 
+    data object QnAInput : Route(route = "qnainput")
+
     data object QnA: Route(route = "qna")
 
     data object QnADetail : Route("qna_detail/{department}/{title}")
 
     data object MentorDetail : Route("mentor_detail/{userName}")
 
+    data object DepartmentDetail : Route("department_detail/{department}")
 }
