@@ -35,6 +35,7 @@ import com.konkuk.kusls.R
 import com.konkuk.kusls.component.SearchBox
 import com.konkuk.kusls.presentation.search.component.CollegeButton
 import com.konkuk.kusls.presentation.search.component.DepartmentBox
+import java.net.URLEncoder
 
 @Composable
 fun SearchScreen(
@@ -183,11 +184,11 @@ fun SearchScreen(
 //            }
             items(searchUiState) { search ->
                 DepartmentBox(
-                    department = search.department,
-                    image = search.image,
-                    college = search.college,
+                    department = search.name,
+                    image = R.drawable.ic_department,
+                    college = "",
                     onClick = {
-                        val encoded = java.net.URLEncoder.encode(search.department, "UTF-8")
+                        val encoded = URLEncoder.encode(search.name, "UTF-8")
                         navController.navigate("department_detail/$encoded")
                     }
                 )
@@ -253,7 +254,11 @@ fun SearchScreen(
                     DepartmentBox(
                         department = search.name,
                         image = R.drawable.ic_department,
-                        college = ""
+                        college = "",
+                        onClick = {
+                            val encoded = java.net.URLEncoder.encode(search.name, "UTF-8")
+                            navController.navigate("department_detail/$encoded")
+                        }
                     )
                 }
             } else {
@@ -261,7 +266,11 @@ fun SearchScreen(
                     DepartmentBox(
                         department = search.name,
                         image = R.drawable.ic_department,
-                        college = ""
+                        college = "",
+                        onClick = {
+                            val encoded = java.net.URLEncoder.encode(search.name, "UTF-8")
+                            navController.navigate("department_detail/$encoded")
+                        }
                     )
                 }
             }

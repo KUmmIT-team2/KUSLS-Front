@@ -61,20 +61,7 @@ fun LogInScreen(
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
 
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 175.dp) // 반응성으로 바꿔야함
-            .zIndex(10f),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = "KUSLS",
-            fontSize = 64.sp,
-            color = Color(0xFF000000),
-            modifier = Modifier
-        )
-    }
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
