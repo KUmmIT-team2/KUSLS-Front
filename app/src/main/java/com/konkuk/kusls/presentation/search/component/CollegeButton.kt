@@ -20,13 +20,12 @@ import androidx.compose.ui.unit.sp
 fun CollegeButton(
     modifier: Modifier = Modifier,
     value: String = "Button",
-    isClicked: Boolean = false
+    isClicked: Boolean = false,
+    event: () -> Unit
 ) {
     if (isClicked) {
         Button(
-            onClick = {
-                TODO()
-            },
+            onClick = event,
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Black,
                 contentColor = Color.White
@@ -47,9 +46,7 @@ fun CollegeButton(
         }
     } else {
         Button(
-            onClick = {
-                TODO()
-            },
+            onClick = event,
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.White,
                 contentColor = Color.Black
@@ -82,5 +79,5 @@ fun CollegeButton(
 @Preview(showBackground = true)
 @Composable
 private fun CollegeButtonPreview() {
-    CollegeButton(value = "문과대학", isClicked = true)
+//    CollegeButton(value = "문과대학", isClicked = true)
 }
