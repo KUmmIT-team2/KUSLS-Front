@@ -3,7 +3,9 @@ package com.konkuk.kusls.presentation.search
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -36,11 +38,14 @@ fun QnAScreen(
     ) {
         QnATitle(department)
 
+        Spacer(modifier=Modifier.height(38.dp))
         SearchBox(
             baseplaceholder = "검색어를 입력해주세요.",
             value = value,
             onValueChanged = { value = it }
         )
+        Spacer(modifier=Modifier.height(5.dp))
+
 
         val qnaList = listOf(
             QnAData(
