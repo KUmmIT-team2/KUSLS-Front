@@ -1,14 +1,10 @@
 package com.konkuk.kusls.presentation.search
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -17,16 +13,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.konkuk.kusls.R
 import com.konkuk.kusls.component.SearchBox
-import com.konkuk.kusls.core.util.context.OutlinedText
+import com.konkuk.kusls.presentation.search.component.QnATitle
 import com.konkuk.kusls.presentation.search.component.QuestionBox
 
 @Composable
@@ -42,24 +34,7 @@ fun QnAScreen(
             .fillMaxSize()
             .background(Color(0xFFFFFFFF))
     ) {
-        Row(
-            modifier = Modifier.padding(top = 33.dp, start = 16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_arrow_left),
-                contentDescription = "QnA Left Arrow",
-                modifier = Modifier.size(24.dp)
-            )
-            Spacer(modifier = Modifier.size(15.dp))
-            OutlinedText(
-                text = "${department} 질문게시판",
-                fontSize = 24.sp,
-                color = Color.Black,
-                outlineColor = Color(0xFF435D18),
-                strokeWidth = 2f
-            )
-        }
+        QnATitle(Modifier, department)
 
         SearchBox(
             baseplaceholder = "검색어를 입력해주세요.",
