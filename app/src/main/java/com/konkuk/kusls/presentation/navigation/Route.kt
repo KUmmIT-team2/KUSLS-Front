@@ -7,9 +7,20 @@ sealed class Route(
 
     data object LogIn : Route(route = "login")
 
+    data object Register : Route(route = "register")
+
+    data object Mentor : Route(route = "mentor")
+
     data object Chat : Route(route = "chat")
 
     data object My : Route(route = "my")
 
     data object Search : Route(route = "search")
+
+    data object QnA: Route(route = "qna")
+
+    data object QnADetail : Route("qna_detail/{department}/{title}")
+
+    data object MentorDetail : Route("mentor_detail/{userName}")
+
 }
