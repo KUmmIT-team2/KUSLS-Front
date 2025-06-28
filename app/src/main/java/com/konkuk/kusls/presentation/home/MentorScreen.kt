@@ -29,7 +29,6 @@ fun MentorScreen(
     navController: NavHostController
 ) {
     val lazyState = rememberLazyListState()
-
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -43,6 +42,7 @@ fun MentorScreen(
         ) {
             Text(
                 text = "Mentor",
+
                 style = TextStyle(
                     fontSize = 17.sp,
                     lineHeight = 22.sp,

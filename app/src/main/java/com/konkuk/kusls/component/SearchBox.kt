@@ -26,7 +26,7 @@ fun SearchBox(
 ) {
     Row(
         modifier = Modifier
-            .padding(start = 28.dp, top = 38.dp, bottom = 5.dp)
+            .padding(start = 28.dp)
             .border(
                 width = 1.dp, color = Color(0xFFCCCCCC), shape = RoundedCornerShape(size = 70.dp)
             )
