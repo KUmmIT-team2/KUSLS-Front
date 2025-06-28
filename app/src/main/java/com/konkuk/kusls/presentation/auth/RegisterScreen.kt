@@ -72,6 +72,8 @@ fun RegisterScreen(
         }
     }
 
+    Spacer(modifier = Modifier.height(100.dp))
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -84,7 +86,6 @@ fun RegisterScreen(
         Column(
             modifier = modifier
                 .width(columnWidthDp.dp)
-                .height((columnWidthDp + 100).dp)
                 .background(color = Color(0x99FFFFFF))
         ) {
             Spacer(modifier = Modifier.height(18.dp))

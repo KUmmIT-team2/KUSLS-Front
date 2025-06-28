@@ -75,7 +75,6 @@ fun LogInScreen(
             modifier = Modifier
         )
     }
-
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -83,12 +82,22 @@ fun LogInScreen(
             .fillMaxSize()
             .background(color = Color(0x80C0E6A3))
     ) {
-        val configuration = LocalConfiguration.current
-        val boxWidthDp: Int = configuration.screenWidthDp - 24
         Box(
+            modifier = Modifier,
+            contentAlignment = Alignment.Center
+        ){
+            Text(
+                text = "KUSLS",
+                fontSize = 64.sp,
+                color = Color(0xFF000000),
+                modifier = Modifier
+            )
+        }
+        val configuration = LocalConfiguration.current
+        val columnWidthDp: Int = configuration.screenWidthDp - 24
+        Column(
             modifier = modifier
-                .width(boxWidthDp.dp)
-                .height((boxWidthDp + 60).dp)
+                .width(columnWidthDp.dp)
                 .background(color = Color(0x99FFFFFF))
         ) {
             Column() {
@@ -178,6 +187,7 @@ fun LogInScreen(
                                 .clickable { navController.navigate(Route.Register.route) }
                         )
                     }
+                    Spacer(modifier = Modifier.height(50.dp))
                 }
             }
         }

@@ -25,6 +25,9 @@ import com.konkuk.kusls.presentation.search.CollegeViewModel
 import com.konkuk.kusls.presentation.search.DepartmentViewModel
 import com.konkuk.kusls.presentation.search.QnADetailScreen
 import com.konkuk.kusls.presentation.search.QnAScreen
+import com.konkuk.kusls.presentation.search.QnaInputScreen
+import com.konkuk.kusls.presentation.search.QnaViewModel
+import com.konkuk.kusls.presentation.search.SearchDetailScreen
 import com.konkuk.kusls.presentation.search.SearchScreen
 import java.net.URLDecoder
 
@@ -82,9 +85,12 @@ fun MainNavGraph(
         }
 
         composable(route = Route.Chat.route) {
-            ChatScreen(
+            QnAScreen(
                 modifier = modifier.padding(innerPadding),
-                navController = navController
+                department = "컴퓨터공학부",
+                navController = navController,
+                viewModel = hiltViewModel<QnaViewModel>()
+
             )
         }
 
@@ -94,6 +100,12 @@ fun MainNavGraph(
                 navController = navController,
                 viewModel = departmentViewModel,
                 viewModel2 = collegeViewModel
+            )
+        }
+
+        composable(route = Route.QnAInput.route) {
+            QnaInputScreen(
+                modifier = modifier.padding(innerPadding),
             )
         }
 
@@ -153,5 +165,14 @@ fun MainNavGraph(
                 navController = navController
             )
         }
+
+        composable(
+            route = Route.DepartmentDetail.route,
+            arguments = listOf(navArgument("department") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val department = backStackEntry.arguments?.getString("department") ?: ""
+            SearchDetailScreen(department = department)
+        }
+
     }
 }

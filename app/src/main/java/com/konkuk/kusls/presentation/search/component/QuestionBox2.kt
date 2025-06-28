@@ -22,12 +22,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import kotlin.time.Duration
 
 @Composable
-fun QuestionBox(title: String, recommend: Int, time: String, onClick: () -> Unit) {
+fun QuestionBox2(title: String, recommend: Int) {
     Box(
         modifier = Modifier
             .border(
@@ -59,7 +56,6 @@ fun QuestionBox(title: String, recommend: Int, time: String, onClick: () -> Unit
         }
         Spacer(
             Modifier
-                .clickable(onClick = onClick)
                 .padding(top = 39.dp, start = 287.dp, end = 15.dp, bottom = 11.dp)
                 .border(
                     width = 1.dp,
@@ -74,7 +70,7 @@ fun QuestionBox(title: String, recommend: Int, time: String, onClick: () -> Unit
             modifier = Modifier.padding(start = 18.dp, top = 53.dp)
         ) {
             Text(
-                text = time,
+                text = "38분 전",
                 style = TextStyle(
                     fontSize = 14.sp,
                     lineHeight = 15.sp,
@@ -96,9 +92,3 @@ fun QuestionBox(title: String, recommend: Int, time: String, onClick: () -> Unit
 
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//private fun QuestionBoxPreview() {
-//    QuestionBox("2학년 때 컴공을 희망하는 학생인데 2학년 올라가기 전 어떤 걸 미리 공부하면 도움이 될까요?", 2)
-//}

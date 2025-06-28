@@ -4,6 +4,7 @@ import com.konkuk.kusls.data.service.AuthService
 import com.konkuk.kusls.data.service.CollegeService
 import com.konkuk.kusls.data.service.DepartmentService
 import com.konkuk.kusls.data.service.MyService
+import com.konkuk.kusls.data.service.QnaService
 import com.konkuk.kusls.data.service.TestService
 import dagger.Module
 import dagger.Provides
@@ -26,6 +27,11 @@ object ApiModule {
         retrofit.create(MyService::class.java)
 
     @Provides
+    @Singleton
+    fun provideQnaService(retrofit: Retrofit): QnaService =
+        retrofit.create(QnaService::class.java)
+
+    @Provides
     fun providesAuthService(retrofit: Retrofit): AuthService =
         retrofit.create(AuthService::class.java)
 
@@ -36,5 +42,6 @@ object ApiModule {
     @Provides
     fun providesCollegeService(retrofit: Retrofit): CollegeService =
         retrofit.create(CollegeService::class.java)
+
 
 }

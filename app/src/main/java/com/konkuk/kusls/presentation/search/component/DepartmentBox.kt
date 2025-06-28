@@ -1,6 +1,7 @@
 package com.konkuk.kusls.presentation.search.component
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -23,7 +24,7 @@ import androidx.compose.ui.unit.sp
 import com.konkuk.kusls.R
 
 @Composable
-fun DepartmentBox(department: String, image: Int, college: String = "") {
+fun DepartmentBox(department: String, image: Int, college: String = "", onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -36,6 +37,7 @@ fun DepartmentBox(department: String, image: Int, college: String = "") {
             modifier = Modifier
                 .size(47.dp)
                 .clip(RoundedCornerShape(40.dp))
+                .clickable { onClick() }
         )
         if (college != "") {
             Text(
@@ -68,8 +70,8 @@ fun DepartmentBox(department: String, image: Int, college: String = "") {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun DepartmentBoxPreview() {
-    DepartmentBox("국어국문학과", image = R.drawable.ic_department, "경영대학")
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun DepartmentBoxPreview() {
+//    DepartmentBox("국어국문학과", image = R.drawable.ic_department, "경영대학")
+//}

@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.konkuk.kusls.R
@@ -182,9 +183,13 @@ fun SearchScreen(
 //            }
             items(searchUiState) { search ->
                 DepartmentBox(
-                    department = search.name,
-                    image = R.drawable.ic_department,
-//                    college = search.name
+                    department = search.department,
+                    image = search.image,
+                    college = search.college,
+                    onClick = {
+                        val encoded = java.net.URLEncoder.encode(search.department, "UTF-8")
+                        navController.navigate("department_detail/$encoded")
+                    }
                 )
             }
         }
@@ -235,6 +240,7 @@ fun SearchScreen(
             state = lazyState,
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
+
 //            items(departList) { search ->
 //                DepartmentBox(
 //                    department = search.department,
