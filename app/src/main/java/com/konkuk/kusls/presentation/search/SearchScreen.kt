@@ -18,8 +18,6 @@ fun SearchScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        MainTitle(
-            title = "search"
-        )
+
     }
 }
