@@ -30,6 +30,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.konkuk.kusls.presentation.search.component.CommentBox
 import com.konkuk.kusls.presentation.search.component.QnATitle
 
@@ -37,7 +38,8 @@ import com.konkuk.kusls.presentation.search.component.QnATitle
 fun QnADetailScreen(
     modifier: Modifier = Modifier,
     department: String,
-    title: String
+    title: String,
+    navController: NavHostController
 ) {
     val lazyState = rememberLazyListState()
 
@@ -46,7 +48,7 @@ fun QnADetailScreen(
             .fillMaxSize()
             .background(Color(0xFFFFFFFF))
     ) {
-        QnATitle(department)
+        QnATitle(department, navController = navController)
 
         Box(
             modifier = Modifier
@@ -180,9 +182,8 @@ fun QnADetailScreen(
     }
 }
 
-
-@Preview
-@Composable
-private fun QnADetailScreenPreview() {
-    QnADetailScreen(Modifier, "컴퓨터공학부", "2학년 때 컴공을 희망하는 학생인데 2학년 올라가기 전 어떤 걸 미리 공부하면 도움이 될까요?")
-}
+//@Preview
+//@Composable
+//private fun QnADetailScreenPreview() {
+//    QnADetailScreen(Modifier, "컴퓨터공학부", "2학년 때 컴공을 희망하는 학생인데 2학년 올라가기 전 어떤 걸 미리 공부하면 도움이 될까요?")
+//}

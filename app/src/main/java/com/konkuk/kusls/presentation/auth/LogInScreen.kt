@@ -2,6 +2,7 @@ package com.konkuk.kusls.presentation.auth
 
 import android.inputmethodservice.Keyboard
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -30,15 +32,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import androidx.navigation.NavHostController
 import com.konkuk.kusls.R
 import com.konkuk.kusls.component.GreenButton
 import com.konkuk.kusls.component.InputBox
 import com.konkuk.kusls.core.component.MainTitle
+import com.konkuk.kusls.presentation.navigation.Route
 import kotlinx.serialization.json.Json.Default.configuration
 
 @Composable
 fun LogInScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavHostController
 ) {
     Box(
         modifier = Modifier
@@ -123,7 +128,9 @@ fun LogInScreen(
                         .fillMaxWidth(),
                     contentAlignment = Alignment.Center
                 ){
-                    GreenButton("LOGIN", 72, 41)
+                    GreenButton("LOGIN", 72, 41,
+                        event = {navController.navigate(Route.Home.route)}
+                    )
                 }
 
                 Spacer(modifier= Modifier.height(48.dp))
@@ -147,7 +154,9 @@ fun LogInScreen(
                         ){}
                         Spacer(modifier = Modifier.width(20.dp))
                         Text(
-                            text = "Create account"
+                            text = "Create account",
+                            modifier = Modifier
+                                .clickable {navController.navigate(Route.Register.route)}
                         )
                     }
                 }
@@ -156,8 +165,8 @@ fun LogInScreen(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun LogInScreenPreview() {
-    LogInScreen()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun LogInScreenPreview() {
+//    LogInScreen()
+//}

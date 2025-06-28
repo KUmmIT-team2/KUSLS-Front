@@ -24,11 +24,19 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.konkuk.kusls.component.GreenButton
 import kotlinx.serialization.json.Json.Default.configuration
 
 @Composable
-fun MentorDetailScreen(modifier: Modifier = Modifier) {
+fun MentorDetailScreen(
+    name: String,
+    college: String,
+    department: String,
+    explain: String,
+    navController: NavHostController,
+    modifier: Modifier = Modifier,
+) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -61,21 +69,21 @@ fun MentorDetailScreen(modifier: Modifier = Modifier) {
                     ) {}
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = "정해찬",
+                        text = name,
                         fontSize = 14.sp
                     )
                 }
 
                 Column(){
                     Text(
-                        text = "문과대학",
+                        text = college,
                         style = TextStyle(
                             fontSize = 15.sp,
                             color = Color(0xFF000000)
                         )
                     )
                     Text(
-                        text = "미디어커뮤니케이션학부",
+                        text = department,
                         style = TextStyle(
                             fontSize = 15.sp,
                             color = Color(0xFF000000)
@@ -83,7 +91,7 @@ fun MentorDetailScreen(modifier: Modifier = Modifier) {
                     )
                     Spacer(modifier = Modifier.height(13.dp))
                     Text(
-                        text = "내용내용내용",
+                        text = explain,
                         style = TextStyle(
                             fontSize = 15.sp,
                             color = Color(0xFF5856D6)
@@ -96,18 +104,18 @@ fun MentorDetailScreen(modifier: Modifier = Modifier) {
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 43.dp)
             ){
-                GreenButton(
-                    value = "질문 하러 가기",
-                    width = 108,
-                    height = 55
-                )
+//                GreenButton(
+//                    value = "질문 하러 가기",
+//                    width = 108,
+//                    height = 55
+//                )
             }
         }
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun MenTorDetailScreenPreview() {
-    MentorDetailScreen()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun MenTorDetailScreenPreview() {
+//    MentorDetailScreen()
+//}

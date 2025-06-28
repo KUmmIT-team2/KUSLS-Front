@@ -2,6 +2,7 @@ package com.konkuk.kusls.presentation.chat.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -30,7 +31,8 @@ fun ChatPreview(
     college: String,
     department: String,
     chatText: String,
-    profileImg: Int
+    profileImg: Int,
+    onImageClick: () -> Unit
 ) {
     Spacer(
         modifier = Modifier
@@ -63,7 +65,9 @@ fun ChatPreview(
                         lineHeight = 18.sp,
                         fontWeight = FontWeight(700),
                         color = Color(0xFF000000),
-                    )
+                    ),
+                    modifier = Modifier
+                        .clickable { onImageClick() }
                 )
                 Text(
                     text = chatText,
@@ -81,14 +85,14 @@ fun ChatPreview(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun ChatPreviewPreview() {
-    ChatPreview(
-        "최지현",
-        "공과대학",
-        "컴퓨터공학부",
-        "컴퓨터공학부 오지마세요~~~~~ ~~~~~~ ~~~ ~~~~~~ ~~~ ~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-        R.drawable.ic_launcher_background
-    )
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun ChatPreviewPreview() {
+//    ChatPreview(
+//        "최지현",
+//        "공과대학",
+//        "컴퓨터공학부",
+//        "컴퓨터공학부 오지마세요~~~~~ ~~~~~~ ~~~ ~~~~~~ ~~~ ~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+//        R.drawable.ic_launcher_background
+//    )
+//}

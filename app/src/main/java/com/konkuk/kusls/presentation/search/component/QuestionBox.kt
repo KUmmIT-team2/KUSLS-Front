@@ -2,6 +2,7 @@ package com.konkuk.kusls.presentation.search.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun QuestionBox(title: String, recommend: Int) {
+fun QuestionBox(title: String, recommend: Int, onClick: () -> Unit) {
 
     Box(
         modifier = Modifier
@@ -59,6 +60,7 @@ fun QuestionBox(title: String, recommend: Int) {
         }
         Spacer(
             Modifier
+                .clickable(onClick = onClick)
                 .padding(top = 39.dp, start = 287.dp, end = 15.dp, bottom = 11.dp)
                 .border(
                     width = 1.dp,
@@ -96,8 +98,8 @@ fun QuestionBox(title: String, recommend: Int) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun QuestionBoxPreview() {
-    QuestionBox("2학년 때 컴공을 희망하는 학생인데 2학년 올라가기 전 어떤 걸 미리 공부하면 도움이 될까요?", 2)
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun QuestionBoxPreview() {
+//    QuestionBox("2학년 때 컴공을 희망하는 학생인데 2학년 올라가기 전 어떤 걸 미리 공부하면 도움이 될까요?", 2)
+//}

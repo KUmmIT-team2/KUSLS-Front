@@ -1,6 +1,7 @@
 package com.konkuk.kusls.presentation.search.component
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -12,11 +13,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.konkuk.kusls.R
 import com.konkuk.kusls.core.util.context.OutlinedText
 
 @Composable
-fun QnATitle(department: String) {
+fun QnATitle(
+    department: String,
+    navController: NavHostController
+) {
     Row(
         modifier = Modifier.padding(top = 33.dp, start = 16.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -24,7 +29,9 @@ fun QnATitle(department: String) {
         Image(
             painter = painterResource(id = R.drawable.ic_arrow_left),
             contentDescription = "QnA Left Arrow",
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier
+                .size(24.dp)
+                .clickable { navController.navigateUp() }
         )
         Spacer(modifier = Modifier.size(15.dp))
         OutlinedText(
