@@ -95,6 +95,7 @@ fun LogInScreen(
                         title = "ID/Username",
                         baseplaceholder = "아이디 혹은 사용자 이름을 입력해 주세요.",
                         errorplaceholder = "아이디가 올바르지 않습니다.",
+                        isStar = false,
                         value = value,
                         onValueChanged = { value = it }
                     )
@@ -110,6 +111,7 @@ fun LogInScreen(
                         title = "Password",
                         baseplaceholder = "비밀번호를 입력해 주세요.",
                         errorplaceholder = "아이디가 올바르지 않습니다.",
+                        isStar = false,
                         value = value,
                         onValueChanged = { value = it }
                     )

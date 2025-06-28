@@ -2,8 +2,8 @@ package com.konkuk.kusls.component
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,6 +27,7 @@ fun InputBox(
     title: String = "입력창 제목",
     baseplaceholder: String = "기본 입력창 내용",
     errorplaceholder: String = "입력 실패",
+    isStar: Boolean = false,
     value: String,
     onValueChanged: (String) -> Unit,
     modifier: Modifier = Modifier
@@ -34,10 +35,21 @@ fun InputBox(
     Column(
         modifier = modifier
     ) {
-        Text(
-            text = title,
-            fontSize = 14.sp
-        )
+        Row(){
+            Text(
+                text = title,
+                fontSize = 14.sp
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            if(isStar){
+                Text(
+                    text = "*",
+                    style = TextStyle(
+                        color = Color(0xFFFF0000)
+                    )
+                )
+            }
+        }
         Spacer(modifier = Modifier.height(4.dp))
         TextField(
             value = value,
@@ -76,6 +88,7 @@ fun InputBoxPreview() {
         title = "제목 입력",
         baseplaceholder = "기본",
         errorplaceholder = "실패",
+        isStar = false,
         value = value,
         onValueChanged = { value = it }
     )
