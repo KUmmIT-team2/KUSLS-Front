@@ -31,13 +31,14 @@ fun MainNavGraph(
     ) {
         composable(route = Route.Home.route) {
             HomeScreen(
-                modifier = modifier.padding(innerPadding)
+                modifier = modifier.padding(innerPadding),
+                navController = navController
             )
         }
 
         composable(route = Route.LogIn.route) {
             LogInScreen(
-                modifier = modifier.padding(innerPadding)
+                modifier = modifier.padding(innerPadding),
             )
 
         }

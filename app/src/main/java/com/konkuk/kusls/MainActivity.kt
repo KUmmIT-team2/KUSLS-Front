@@ -24,6 +24,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.konkuk.kusls.presentation.navigation.BottomNavItem
 import com.konkuk.kusls.presentation.navigation.MainNavGraph
@@ -39,7 +40,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             KUSLSTheme {
                 val navController = rememberNavController()
-                var selectedRoute by remember { mutableStateOf(Route.Home.route) }
+                val navBackStackEntry by navController.currentBackStackEntryAsState()
+                val currentRoute = navBackStackEntry?.destination?.route
+
 
                 val bottomNavItems = listOf(
                     BottomNavItem(Route.Home.route, R.drawable.ic_home),
@@ -69,14 +72,12 @@ class MainActivity : ComponentActivity() {
                         ) {
                             bottomNavItems.forEach { item ->
                                 NavigationBarItem(
-                                    selected = selectedRoute == item.route,
+                                    selected = currentRoute == item.route,
                                     onClick = {
-                                        selectedRoute = item.route
-                                        navController.navigate(item.route) {
-                                            launchSingleTop = true
-                                            restoreState = true
-                                            popUpTo(navController.graph.startDestinationId) {
-                                                saveState = true
+                                        if (currentRoute != item.route) {
+                                            navController.navigate(item.route) {
+                                                launchSingleTop = true
+                                                restoreState = true
                                             }
                                         }
                                     },
