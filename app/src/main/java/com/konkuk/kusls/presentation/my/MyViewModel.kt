@@ -13,17 +13,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MyViewModel @Inject constructor(
-    private val myRepository: MyRepository
+    private val myRepository: MyRepository,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MyUiState())
     val uiState = _uiState.asStateFlow()
 
-    fun getMy() {
+        fun getMy() {
         viewModelScope.launch {
             myRepository.getMy().fold(
                 onSuccess = { data ->
-                    _uiState.value = data.data.toUiState()
+                    _uiState.value = data.toUiState()
                 },
                 onFailure = { error ->
                     Log.e("okhttpError", error.message.toString())

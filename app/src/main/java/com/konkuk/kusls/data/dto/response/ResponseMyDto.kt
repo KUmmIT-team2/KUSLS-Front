@@ -5,18 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ResponseMyDto(
-    @SerialName("bio")
-    val bio: String,
-    @SerialName("departmentId")
-    val departmentId: Int,
-    @SerialName("email")
-    val email: String,
-    @SerialName("isMentor")
+    val username: String,
+    val studentNumber: String,
     val isMentor: Boolean,
-    @SerialName("nickname")
-    val nickname: String,
-    @SerialName("url")
-    val url: String,
-    @SerialName("username")
-    val username: String
+    val departmentId: Int,
+    val commentCount: Int
 )

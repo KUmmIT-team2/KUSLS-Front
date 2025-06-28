@@ -10,10 +10,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -25,6 +28,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.konkuk.kusls.R
 import com.konkuk.kusls.component.SearchBox
@@ -34,8 +39,23 @@ import com.konkuk.kusls.presentation.search.component.DepartmentBox
 @Composable
 fun SearchScreen(
     modifier: Modifier = Modifier,
-    navController : NavHostController
+    navController: NavHostController,
+    viewModel: DepartmentViewModel,
+    viewModel2: CollegeViewModel
 ) {
+
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val uiState2 by viewModel2.uiState.collectAsStateWithLifecycle()
+    val uiState3 by viewModel2.uiStated.collectAsStateWithLifecycle()
+    val searchUiState by viewModel2.searchUiState.collectAsStateWithLifecycle()
+
+    var isWhole by remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        viewModel.getDepartments()
+        viewModel2.getColleges()
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -59,8 +79,12 @@ fun SearchScreen(
         SearchBox(
             baseplaceholder = "검색어를 입력해주세요.",
             value = value,
-            onValueChanged = { value = it }
+            onValueChanged = {
+                value = it
+                viewModel2.getSearchCollege(value)
+            }
         )
+
         Text(
             text = "2 results",
             style = TextStyle(
@@ -150,7 +174,14 @@ fun SearchScreen(
             state = searchlazyState,
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
-            items(searchList) { search ->
+//            items(searchList) { search ->
+//                DepartmentBox(
+//                    department = search.department,
+//                    image = search.image,
+//                    college = search.college
+//                )
+//            }
+            items(searchUiState) { search ->
                 DepartmentBox(
                     department = search.department,
                     image = search.image,
@@ -162,6 +193,8 @@ fun SearchScreen(
                 )
             }
         }
+
+//        var isWhole: Boolean = false
 
         val collegeList = listOf(
             "문과대학",
@@ -178,14 +211,24 @@ fun SearchScreen(
         LazyRow(
             state = buttonlazyState,
             modifier = Modifier
-                .padding(  start=12.dp, end=12.dp, top=12.dp)
+                .padding(start = 12.dp, end = 12.dp, top = 12.dp)
                 .height(32.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(collegeList) { college ->
+
+            itemsIndexed(uiState2) { index, college ->
+                val isLast = index == uiState2.lastIndex
                 CollegeButton(
-                    value = college,
-                    isClicked = college == "문과대학"  // 문과대학만 클릭된 상태
+                    value = college.name,
+                    event = {
+                        if (isLast) {
+                            isWhole = true
+//                            viewModel2.getCollegeDetail(college.id)
+                        } else {
+                            isWhole = false
+                            viewModel2.getCollegeDetail(college.id)
+                        }
+                    }
                 )
             }
         }
@@ -197,16 +240,30 @@ fun SearchScreen(
             state = lazyState,
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
-            items(departList) { search ->
-                DepartmentBox(
-                    department = search.department,
-                    image = search.image,
-                    college = search.college,
-                    onClick = {
-                        val encoded = java.net.URLEncoder.encode(search.department, "UTF-8")
-                        navController.navigate("department_detail/$encoded")
-                    }
-                )
+
+//            items(departList) { search ->
+//                DepartmentBox(
+//                    department = search.department,
+//                    image = search.image,
+//                    college = search.college
+//                )
+//            }
+            if (isWhole) {
+                items(uiState) { search ->
+                    DepartmentBox(
+                        department = search.name,
+                        image = R.drawable.ic_department,
+                        college = ""
+                    )
+                }
+            } else {
+                items(uiState3) { search ->
+                    DepartmentBox(
+                        department = search.name,
+                        image = R.drawable.ic_department,
+                        college = ""
+                    )
+                }
             }
         }
     }

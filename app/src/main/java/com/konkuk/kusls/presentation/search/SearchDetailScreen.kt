@@ -1,6 +1,5 @@
 package com.konkuk.kusls.presentation.search
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -80,6 +78,7 @@ fun SearchDetailScreen(modifier: Modifier = Modifier, department: String) {
 //            QuestionBox(
 //                title = "000교수님 수업 어떤가요? 학점 잘 주시나요?",
 //                recommend = 7
+
 //            )
             Spacer(modifier = Modifier.size(30.dp))
 
