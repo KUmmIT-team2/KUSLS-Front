@@ -16,7 +16,7 @@ import com.konkuk.kusls.R
 import com.konkuk.kusls.core.util.context.OutlinedText
 
 @Composable
-fun QnATitle(modifier: Modifier = Modifier, department: String) {
+fun QnATitle(department: String) {
     Row(
         modifier = Modifier.padding(top = 33.dp, start = 16.dp),
         verticalAlignment = Alignment.CenterVertically
