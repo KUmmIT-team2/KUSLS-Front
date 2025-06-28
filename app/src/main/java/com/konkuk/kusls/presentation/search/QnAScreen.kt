@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -19,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.konkuk.kusls.component.SearchBox
 import com.konkuk.kusls.presentation.search.component.QnATitle
 import com.konkuk.kusls.presentation.search.component.QuestionBox
@@ -26,7 +28,8 @@ import com.konkuk.kusls.presentation.search.component.QuestionBox
 @Composable
 fun QnAScreen(
     modifier: Modifier = Modifier,
-    department: String
+    department: String,
+    navController: NavHostController
 ) {
     val lazyState = rememberLazyListState()
     var value by remember { mutableStateOf("") }
@@ -36,7 +39,10 @@ fun QnAScreen(
             .fillMaxSize()
             .background(Color(0xFFFFFFFF))
     ) {
-        QnATitle(department)
+        QnATitle(
+            department = department,
+            navController = navController
+        )
 
         Spacer(modifier=Modifier.height(38.dp))
         SearchBox(
@@ -95,20 +101,26 @@ fun QnAScreen(
             state = lazyState,
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            items(qnaList) { qna ->
+            itemsIndexed(qnaList) { index, qna ->
                 QuestionBox(
                     title = qna.title,
                     recommend = qna.recommend,
+                    onClick = {
+                        val encodedDept = java.net.URLEncoder.encode(department, "UTF-8")
+                        val encodedTitle = java.net.URLEncoder.encode(qna.title, "UTF-8")
+                        navController.navigate("qna_detail/$encodedDept/$encodedTitle")
+                    }
                 )
             }
         }
+
 
     }
 }
 
 
-@Preview(showBackground = true)
-@Composable
-private fun ChatScreenPreview() {
-    QnAScreen(Modifier, "컴퓨터공학부")
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun ChatScreenPreview() {
+//    QnAScreen(Modifier, "컴퓨터공학부")
+//}

@@ -17,20 +17,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.konkuk.kusls.R
-import com.konkuk.kusls.presentation.chat.ChatData
 import com.konkuk.kusls.presentation.chat.component.ChatPreview
 
 @Composable
 fun MentorScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavHostController
 ) {
     val lazyState = rememberLazyListState()
-
-
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -43,7 +41,8 @@ fun MentorScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Chats",
+                text = "Mentor",
+
                 style = TextStyle(
                     fontSize = 17.sp,
                     lineHeight = 22.sp,
@@ -89,17 +88,14 @@ fun MentorScreen(
                     college = chat.college,
                     department = chat.department,
                     chatText = chat.chatText,
-                    profileImg = chat.profileImage
+                    profileImg = chat.profileImage,
+                    onImageClick = {
+                        navController.navigate("mentor_detail/${chat.userName}")
+                    }
+
                 )
             }
         }
 
     }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-private fun ChatScreenPreview() {
-    MentorScreen()
 }

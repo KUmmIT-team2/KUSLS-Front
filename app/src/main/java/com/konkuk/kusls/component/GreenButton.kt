@@ -28,6 +28,7 @@ fun GreenButton(
     value: String = "Button",
     width: Int = 72,
     height: Int = 41,
+    event: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -41,9 +42,7 @@ fun GreenButton(
                 .width(width.dp)
                 .height(height.dp)
                 .align(Alignment.CenterEnd),
-            onClick = {
-                // TODO
-            },
+            onClick = event,
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFF435D18),
                 contentColor = Color.White
@@ -58,8 +57,8 @@ fun GreenButton(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreenButtonPreview() {
-    GreenButton()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun GreenButtonPreview() {
+//    GreenButton()
+//}

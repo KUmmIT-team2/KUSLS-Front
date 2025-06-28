@@ -2,6 +2,7 @@ package com.konkuk.kusls.presentation.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,11 +34,6 @@ fun HomeScreen(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
-    Button(onClick = {
-        navController.navigate(Route.LogIn.route)
-    }) {
-        Text("로그인 하러 가기")
-    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -58,6 +54,7 @@ fun HomeScreen(
             contentDescription = "arrow_b",
             modifier = Modifier
                 .size(20.dp)
+                .clickable { navController.navigate(Route.Mentor.route) }
         )
     }
 }

@@ -32,7 +32,8 @@ import com.konkuk.kusls.presentation.search.component.DepartmentBox
 
 @Composable
 fun SearchScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController : NavHostController
 ) {
     Column(
         modifier = modifier
@@ -203,8 +204,8 @@ fun SearchScreen(
 }
 
 
-@Preview(showBackground = true)
-@Composable
-private fun SearchScreenPreview() {
-    SearchScreen()
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun SearchScreenPreview() {
+//    SearchScreen()
+//}

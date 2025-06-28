@@ -35,14 +35,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import androidx.navigation.NavHostController
 import com.konkuk.kusls.R
 import com.konkuk.kusls.component.GreenButton
 import com.konkuk.kusls.component.InputBox
 import com.konkuk.kusls.core.component.MainTitle
+import com.konkuk.kusls.presentation.navigation.Route
 
 @Composable
 fun RegisterScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavHostController
 ) {
     Box(
         modifier = Modifier
@@ -161,12 +164,12 @@ fun RegisterScreen(
             }
         }
         Spacer(modifier = Modifier.height(27.dp))
-        GreenButton("가입하기",83, 55)
+        GreenButton("가입하기",83, 55, event = {navController.navigate(Route.LogIn.route)})
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun RegisterScreenPreview() {
-    RegisterScreen()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun RegisterScreenPreview() {
+//    RegisterScreen()
+//}
