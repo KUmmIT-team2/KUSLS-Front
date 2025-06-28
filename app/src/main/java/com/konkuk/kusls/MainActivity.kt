@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
@@ -62,7 +63,8 @@ class MainActivity : ComponentActivity() {
                                         end = Offset(size.width, 0f),
                                         strokeWidth = strokeWidth,
                                     )
-                                },
+                                }
+                                .height(41.dp),
                             containerColor = Color.White,
                         ) {
                             bottomNavItems.forEach { item ->
